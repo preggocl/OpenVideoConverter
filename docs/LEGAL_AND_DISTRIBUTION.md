@@ -12,7 +12,7 @@ The two historical repositories currently identify GPL-3.0. If MVC4 distributes 
 |---|---|
 | MVC4 project license | Pending source-reuse decision. |
 | Use of historic source code | Pending file-level provenance review. |
-| Use of “Miro Video Converter 4” / “Miro” | Working-name only; trademark review pending. |
+| Use of “Miro Video Converter 4” / “Miro” | Permission requested from PCF on 2026-08-27; written response pending. |
 | Historic logos, icons, text, and screenshots | Not approved for reuse. |
 | FFmpeg/ffprobe source and build configuration | Pending. |
 | Enabled codecs, external libraries, and regional distribution implications | Pending qualified review. |
@@ -31,3 +31,7 @@ See [FFmpeg’s legal guidance](https://ffmpeg.org/legal.html). It is technical 
 3. FFmpeg bill of materials and reproducible build proposal.
 4. Distribution checklist covering code, notices, source access, signing, notarization, updates, and release artifacts.
 5. A documented project license decision before implementation source is published.
+
+## Branding operating rule while permission is pending
+
+No new public release, product asset, application bundle, or promotional claim may use the Miro names, logos, or icons. The existing repository references the historic project only to document the permission request and research context. A written authorization or a distinct replacement identity is required before Phase 1 begins.

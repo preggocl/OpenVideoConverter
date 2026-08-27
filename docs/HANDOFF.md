@@ -14,4 +14,4 @@ Obtain the branding/license review and any remaining permitted state references 
 
 ## Critical cautions
 
-Keep the working name and historical visual materials under review. Separate source-code licensing, brand rights, asset provenance, FFmpeg distribution, and codec/distribution considerations.
+Keep the working name and historical visual materials under review. Permission for the historic name is pending; do not create releases, assets, or promotional claims using it. Separate source-code licensing, brand rights, asset provenance, FFmpeg distribution, and codec/distribution considerations.

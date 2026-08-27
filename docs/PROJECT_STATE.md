@@ -14,6 +14,7 @@ Phase 0 — historical analysis, licensing/branding review, and implementation p
 - Private visual references for the queued/selection state were reviewed and recorded without publication; see `VISUAL_REFERENCE_NOTES.md`.
 - FFmpeg/ffprobe distribution options and the verification matrix are documented; no media build has been selected.
 - A staged distribution policy distinguishes experimental GitHub artifacts from later signed/notarized stable releases.
+- Permission to use the historic Miro name was requested from PCF on 2026-08-27; no written authorization has been received.
 
 ## Immediate priorities
 
