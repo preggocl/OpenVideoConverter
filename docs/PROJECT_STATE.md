@@ -10,13 +10,14 @@ Phase 0 — historical analysis, licensing/branding review, and implementation p
 - No application source, Xcode project, media binary, or release artifact exists.
 - Working name: Miro Video Converter 4; branding remains under review.
 - Initial upstream audit completed at immutable revisions `6fae8ba` and `27efad9`; see `RESEARCH_FINDINGS.md` and `PROVENANCE_REGISTER.md`.
+- Source-based UI/behavior audit completed; see `UI_AND_BEHAVIOR_AUDIT.md`.
 
 ## Immediate priorities
 
-1. Capture the original Mac UI and behavior evidence.
-2. Complete the branding and file-level reuse review.
-3. Evaluate modern FFmpeg/ffprobe distribution options.
-4. Define the media fixture and verification matrix.
+1. Complete the branding and file-level reuse review.
+2. Evaluate modern FFmpeg/ffprobe distribution options.
+3. Define the media fixture and verification matrix.
+4. Obtain permitted visual references for historical UI states.
 5. Publish a reviewed Phase 1 implementation backlog.
 
 ## Important cautions

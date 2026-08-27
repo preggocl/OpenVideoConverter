@@ -10,7 +10,7 @@ The repository contains public, project-facing documentation only. No applicatio
 
 ## Next action
 
-Capture a complete UI and behavior reference from the native historical Mac application, then define the modern FFmpeg/ffprobe distribution options and verification matrix.
+Define the modern FFmpeg/ffprobe distribution options and verification matrix, while collecting permitted visual references for the historical UI states.
 
 ## Critical cautions
 
