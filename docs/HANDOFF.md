@@ -10,7 +10,7 @@ The repository contains public, project-facing documentation only. No applicatio
 
 ## Next action
 
-Define the modern FFmpeg/ffprobe distribution options and verification matrix, while collecting permitted visual references for the historical UI states.
+Obtain the branding/license review and permitted visual references required to complete Phase 0, then publish the approved Phase 1 backlog.
 
 ## Critical cautions
 
