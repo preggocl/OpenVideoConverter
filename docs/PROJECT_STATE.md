@@ -13,6 +13,7 @@ Phase 0 — historical analysis, licensing/branding review, and implementation p
 - Source-based UI/behavior audit completed; see `UI_AND_BEHAVIOR_AUDIT.md`.
 - Private visual references for the queued/selection state were reviewed and recorded without publication; see `VISUAL_REFERENCE_NOTES.md`.
 - FFmpeg/ffprobe distribution options and the verification matrix are documented; no media build has been selected.
+- A staged distribution policy distinguishes experimental GitHub artifacts from later signed/notarized stable releases.
 
 ## Immediate priorities
 

@@ -18,7 +18,7 @@ Refine the historical Miro experience, add reviewed Online, Devices, Editing, an
 
 ## Phase 4 — Release readiness
 
-Accessibility, failure recovery, privacy review, licensing notices, source availability, signing, notarization, release artifacts, checksums, and release notes.
+Accessibility, failure recovery, privacy review, licensing notices, source availability, signing, notarization, release artifacts, checksums, and release notes. Experimental GitHub builds may precede this phase only under the documented alpha-release policy.
 
 ## Later exploration
 
