@@ -4,7 +4,7 @@ _Last verified: 2026-08-27._
 
 ## Verified upstream revisions
 
-| Repository | Verified revision | Last project commit | License shown by GitHub | Role in MVC4 research |
+| Repository | Verified revision | Last project commit | License shown by GitHub | Role in Open Video Converter research |
 |---|---:|---|---|---|
 | [`pculture/mirovideoconverter`](https://github.com/pculture/mirovideoconverter) | `6fae8ba4f394245b9e3d48f670367460bf175748` | 2012-09-10, “Revised README to note this repo is inactive.” | GPL-3.0 | Primary historical Mac UI and behavior reference. |
 | [`pculture/mirovideoconverter3`](https://github.com/pculture/mirovideoconverter3) | `27efad91845c8ae544dc27034adb0d3e18ca8f1f` | 2012-12-28, “Bumping version to 3.0.2.” | GPL-3.0 | Secondary reference for the later rewrite and conversion organization. |
@@ -20,7 +20,7 @@ The original repository contains a real native Mac application, not merely a con
 - The queue/drop-window resources and app metadata.
 - Historical packaging, updater, FFmpeg-build, and third-party material.
 
-This confirms the original repository is the correct evidence source for MVC4’s intended visual hierarchy and interaction behavior. It does **not** authorize copying any individual source file, XIB, icon, binary, or branded asset; that requires the provenance and licensing decision recorded in this repository.
+This confirms the original repository is the correct evidence source for Open Video Converter’s intended visual hierarchy and interaction behavior. It does **not** authorize copying any individual source file, XIB, icon, binary, or branded asset; that requires the provenance and licensing decision recorded in this repository.
 
 ## MVC3 is not a modern macOS base
 
@@ -38,12 +38,12 @@ The forks inspected do not provide a maintained modern successor:
 | `melodyMe/melodyMe-VC` | 21 commits ahead | A renamed historical derivative with mostly branding/build/widget changes; not a current macOS continuation. |
 | sampled forks of `mirovideoconverter` | identical where comparison was available | No substantive successor found in the sampled set. |
 
-This is not a claim that no useful change exists anywhere in every fork. It is evidence that no inspected fork should become MVC4’s upstream by default.
+This is not a claim that no useful change exists anywhere in every fork. It is evidence that no inspected fork should become Open Video Converter’s upstream by default.
 
 ## Historical material requiring exclusion or separate review
 
 - The original Mac tree includes an old FFmpeg build toolchain, archived dependency tarballs, a bundled Sparkle framework, and historical updater/packaging scripts. These are reference-only until individually reviewed.
-- A historical signing-related file is tracked in the original Mac distribution material. Its contents are not reproduced or used here. MVC4 must never copy it, rely on it, or preserve it in any derivative work.
+- A historical signing-related file is tracked in the original Mac distribution material. Its contents are not reproduced or used here. Open Video Converter must never copy it, rely on it, or preserve it in any derivative work.
 - Source code license, branding, icons/artwork, old screenshots, binaries, third-party frameworks, and release infrastructure remain separate review topics.
 
 ## Current conclusion

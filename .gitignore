@@ -3,6 +3,10 @@ DerivedData/
 build/
 *.xcuserstate
 xcuserdata/
+.build-local/
+.build-local-tests/
+dist/
+.codex/
 
 # Local planning material not intended for publication
 miro-video-converter-4-docs/

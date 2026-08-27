@@ -19,7 +19,7 @@ Private visual references of the historic Mac application were reviewed on 2026-
 - The Android menu illustrates why the old device catalog must be replaced: manufacturer and handset submenus dominate the interaction.
 - The Format menu contains Audio, Video, Ingest Formats, and Same Format; the Video submenu includes WebM HD, WebM SD, MP4, and Ogg Theora.
 
-## MVC4 reconstruction rules
+## Open Video Converter reconstruction rules
 
 1. Preserve the spatial rhythm: compact queue above, generous drop zone in the middle, output controls below, and one centered conversion action.
 2. Preserve native popup-menu interaction, but replace the device-era labels with current purpose-oriented menus.

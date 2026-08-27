@@ -2,15 +2,15 @@
 
 ## Current position
 
-MVC4 is public, but it has no implementation code and no project license yet. Public visibility does not settle reuse rights, licensing, trademarks, patents, or distribution compliance.
+Open Video Converter is public and now contains original implementation code, but has no project license or public application release yet. Public visibility does not settle reuse rights, licensing, trademarks, patents, or distribution compliance.
 
-The two historical repositories currently identify GPL-3.0. If MVC4 distributes code derived from GPL-covered upstream material, its licensing and source-distribution obligations must be designed and reviewed before release.
+The two historical repositories currently identify GPL-3.0. If Open Video Converter distributes code derived from GPL-covered upstream material, its licensing and source-distribution obligations must be designed and reviewed before release.
 
 ## Separate decisions
 
 | Decision | Status |
 |---|---|
-| MVC4 project license | Pending source-reuse decision. |
+| Open Video Converter project license | Pending source-reuse decision. |
 | Use of historic source code | Pending file-level provenance review. |
 | Use of “Miro Video Converter 4” / “Miro” | Permission requested from PCF on 2026-08-27; written response pending. |
 | Historic logos, icons, text, and screenshots | Not approved for reuse. |
@@ -20,7 +20,7 @@ The two historical repositories currently identify GPL-3.0. If MVC4 distributes 
 
 ## FFmpeg baseline
 
-FFmpeg states that its core is LGPL 2.1-or-later by default, while optional GPL-covered components can make the FFmpeg build GPL. The license and obligations therefore depend on the **exact** source revision and configuration selected. MVC4 will not bundle FFmpeg until it has a bill of materials, configure/build record, corresponding-source delivery plan, notices, and review of all enabled external libraries.
+FFmpeg states that its core is LGPL 2.1-or-later by default, while optional GPL-covered components can make the FFmpeg build GPL. The license and obligations therefore depend on the **exact** source revision and configuration selected. Open Video Converter will not bundle FFmpeg until it has a bill of materials, configure/build record, corresponding-source delivery plan, notices, and review of all enabled external libraries.
 
 See [FFmpeg’s legal guidance](https://ffmpeg.org/legal.html). It is technical guidance rather than legal advice; legal review remains required before a public application distribution.
 

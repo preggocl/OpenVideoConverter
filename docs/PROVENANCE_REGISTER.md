@@ -2,7 +2,7 @@
 
 This register records the initial classification of historical material. It is intentionally conservative.
 
-| Material | Historical location | Classification | MVC4 rule |
+| Material | Historical location | Classification | Open Video Converter rule |
 |---|---|---|---|
 | Product workflow and UI behavior | `pculture/mirovideoconverter`, Mac application tree | Reference-only | Recreate from documented behavior after review. |
 | Cocoa/Objective-C source | `Mac/Classes/` | Candidate GPL-covered source | Do not copy or port until the project license and reuse decision are approved. |

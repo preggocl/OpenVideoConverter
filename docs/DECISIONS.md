@@ -14,7 +14,7 @@
 
 **Decision:** Treat `pculture/mirovideoconverter` as the primary source for behavioral and visual research; treat MVC3 as a secondary rewrite reference.
 
-**Consequences:** MVC4 will recreate the experience in a modern native application rather than porting either upstream wholesale.
+**Consequences:** Open Video Converter will recreate the experience in a modern native application rather than porting either upstream wholesale.
 
 ## 2026-08-27 — Proposed implementation direction is Swift + AppKit with ffprobe/FFmpeg
 
@@ -28,6 +28,6 @@
 
 **Context:** Predictable conversion behavior requires version, capability, provenance, and packaging control.
 
-**Decision:** Validate a reproducible MVC4-controlled FFmpeg/ffprobe build as the preferred candidate; do not select it yet.
+**Decision:** Validate a reproducible Open Video Converter-controlled FFmpeg/ffprobe build as the preferred candidate; do not select it yet.
 
 **Consequences:** Phase 1 cannot integrate a media binary until its bill of materials, configuration, licensing, signing, and verification plan are approved.

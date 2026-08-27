@@ -1,6 +1,6 @@
 # Architecture
 
-_Proposed architecture; implementation begins only after Phase 0 approval._
+_The AppKit foundation and domain models are now implemented locally. Media inspection, conversion, and output management remain proposed until the Phase 0 media decision is approved._
 
 ```text
 AppKit interface

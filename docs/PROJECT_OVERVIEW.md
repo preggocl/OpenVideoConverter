@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Miro Video Converter 4 is a planned modern macOS video-conversion application inspired by the clarity of the historic Miro Video Converter workflow. It should allow a person to add one or more files, choose a useful destination, and convert them safely.
+Open Video Converter is a working title for a planned modern macOS video-conversion application inspired by the clarity of the historic Miro Video Converter workflow. It should allow a person to add one or more files, choose a useful destination, and convert them safely.
 
 ## Intended experience
 

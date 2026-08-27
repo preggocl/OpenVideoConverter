@@ -1,6 +1,6 @@
 # Contributing
 
-Thank you for your interest in Miro Video Converter 4.
+Thank you for your interest in Open Video Converter.
 
 ## Current phase
 

@@ -20,7 +20,7 @@ Evidence appears in the historical root controller, drop view, task watcher, con
 
 ## Structure worth preserving
 
-| Historical element | Observed role | MVC4 direction |
+| Historical element | Observed role | Open Video Converter direction |
 |---|---|---|
 | Drop zone | Receives a file through native drag-and-drop. | Preserve, expanded for a modern multi-file queue. |
 | File label | Makes the selected file visible, with truncation for long names. | Preserve as per-item file naming in the queue. |
@@ -33,7 +33,7 @@ Evidence appears in the historical root controller, drop view, task watcher, con
 
 The historical code groups destinations under Android Devices, Apple Devices, and Other Devices and Formats. It includes device-specific entries such as early Android handsets, iPod variants, PSP, Kindle Fire, Theora, WebM VP8, MP4, and MP3.
 
-MVC4 should retain the **picker-based simplicity**, not the old taxonomy. The proposed categories are Online, Devices/Compatibility, Editing, Format, Tools, and Advanced. They should be data-defined and versioned rather than compiled into a static source array.
+Open Video Converter should retain the **picker-based simplicity**, not the old taxonomy. The proposed categories are Online, Devices/Compatibility, Editing, Format, Tools, and Advanced. They should be data-defined and versioned rather than compiled into a static source array.
 
 ## UI fidelity rules for Phase 1 design
 

@@ -1,6 +1,6 @@
 # Distribution Policy
 
-_Phase 0 policy proposal. It applies when MVC4 has a distributable build; no build exists yet._
+_Phase 0 policy proposal. It applies when Open Video Converter has a distributable build; no build exists yet._
 
 ## Goal
 

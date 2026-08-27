@@ -13,7 +13,7 @@ _This backlog is not authorized for implementation until Phase 0 exit criteria a
 
 1. Create the macOS Xcode project with a reproducible Debug build and an isolated DerivedData workflow.
 2. Establish architecture-specific build checks for Apple Silicon and Intel.
-3. Add a minimal AppKit window that reproduces the approved empty-state layout using original MVC4 assets only.
+3. Add a minimal AppKit window that reproduces the approved empty-state layout using original Open Video Converter assets only.
 4. Add project documentation/build conventions without embedding release credentials or local machine configuration.
 
 ## P2 — Inspection and model layer
