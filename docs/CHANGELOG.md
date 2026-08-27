@@ -16,3 +16,4 @@ All notable project changes are documented here. The repository history remains 
 - Added an original Swift/AppKit local-development foundation with file intake, drag-and-drop, queue state models, and an initial preset catalogue.
 - Added local build/run and test workflows.
 - Verified the foundation locally with three automated tests and a Debug app launch; no public binary has been released.
+- Reworked the empty conversion screen to use the documented restrained dark intake field and fixed output-control footer, with original controls and current-purpose menu labels.

@@ -3,69 +3,104 @@ import AppKit
 @MainActor
 final class ConverterViewController: NSViewController {
     private let queueStore: QueueStore
-    private let queueLabel = NSTextField(labelWithString: "No videos queued")
-    private let presetPicker = NSPopUpButton(frame: .zero, pullsDown: false)
-    private let convertButton = NSButton(title: "Convert Now", target: nil, action: nil)
+    private let dropZone = DropZoneView()
+    private let convertButton = ConverterControlButton(title: "Convert Now", style: .action)
+    private var selectedPreset: MediaPreset?
 
     init(queueStore: QueueStore) {
         self.queueStore = queueStore
         super.init(nibName: nil, bundle: nil)
     }
 
-    required init?(coder: NSCoder) {
-        nil
-    }
+    required init?(coder: NSCoder) { nil }
 
     override func loadView() {
         view = NSView()
-        view.translatesAutoresizingMaskIntoConstraints = false
+        view.wantsLayer = true
+        view.layer?.backgroundColor = NSColor(hex: 0x292B2E).cgColor
+        view.widthAnchor.constraint(greaterThanOrEqualToConstant: 940).isActive = true
+        view.heightAnchor.constraint(greaterThanOrEqualToConstant: 900).isActive = true
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let stack = NSStackView()
-        stack.orientation = .vertical
-        stack.spacing = 16
-        stack.edgeInsets = NSEdgeInsets(top: 22, left: 22, bottom: 22, right: 22)
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(stack)
+        let footer = ConverterFooterView()
+        footer.translatesAutoresizingMaskIntoConstraints = false
+        dropZone.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(dropZone)
+        view.addSubview(footer)
         NSLayoutConstraint.activate([
-            stack.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            stack.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            stack.topAnchor.constraint(equalTo: view.topAnchor),
-            stack.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            dropZone.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            dropZone.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            dropZone.topAnchor.constraint(equalTo: view.topAnchor),
+            dropZone.bottomAnchor.constraint(equalTo: footer.topAnchor),
+            footer.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            footer.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            footer.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            footer.heightAnchor.constraint(equalToConstant: 292)
         ])
 
-        queueLabel.font = .systemFont(ofSize: 16, weight: .semibold)
-        stack.addArrangedSubview(queueLabel)
+        dropZone.onFileURLsDropped = { [weak self] urls in self?.addFiles(urls) }
+        dropZone.onChooseFiles = { [weak self] in self?.chooseFiles() }
+        configureFooter(in: footer)
+        updateControls()
+    }
 
-        let dropZone = DropZoneView()
-        dropZone.onFileURLsDropped = { [weak self] urls in
-            self?.addFiles(urls)
-        }
-        dropZone.translatesAutoresizingMaskIntoConstraints = false
-        stack.addArrangedSubview(dropZone)
-        dropZone.heightAnchor.constraint(greaterThanOrEqualToConstant: 260).isActive = true
+    private func configureFooter(in footer: NSView) {
+        let title = NSTextField(labelWithString: "Convert to")
+        title.font = .systemFont(ofSize: 20, weight: .regular)
+        title.textColor = NSColor.black.withAlphaComponent(0.52)
+        title.translatesAutoresizingMaskIntoConstraints = false
 
-        let controls = NSStackView()
+        let online = makeMenuButton(title: "Online", options: ["YouTube 1080p", "Vimeo 1080p", "Social video"])
+        let devices = makeMenuButton(title: "Devices", options: ["Apple devices", "Android devices", "Other devices"])
+        let formats = makeMenuButton(title: "Format", options: MediaPreset.initialCatalog.map(\.name))
+        let tools = makeMenuButton(title: "Tools", symbolName: "gearshape", options: ["Rotate left", "Rotate right", "Auto-rotate"])
+
+        let controls = NSStackView(views: [online, devices, formats, tools])
         controls.orientation = .horizontal
-        controls.spacing = 10
-        controls.alignment = .centerY
+        controls.spacing = 9
+        controls.translatesAutoresizingMaskIntoConstraints = false
+        footer.addSubview(title)
+        footer.addSubview(controls)
 
-        let chooseButton = NSButton(title: "Choose Files…", target: self, action: #selector(chooseFiles))
-        controls.addArrangedSubview(chooseButton)
+        convertButton.target = self
+        convertButton.action = #selector(convertRequested)
+        convertButton.translatesAutoresizingMaskIntoConstraints = false
+        footer.addSubview(convertButton)
 
-        presetPicker.addItem(withTitle: "Convert to")
-        presetPicker.menu?.items.first?.isEnabled = false
-        presetPicker.addItems(withTitles: MediaPreset.initialCatalog.map(\.name))
-        presetPicker.target = self
-        presetPicker.action = #selector(presetChanged)
-        controls.addArrangedSubview(presetPicker)
+        NSLayoutConstraint.activate([
+            title.leadingAnchor.constraint(equalTo: footer.leadingAnchor, constant: 40),
+            title.topAnchor.constraint(equalTo: footer.topAnchor, constant: 27),
+            controls.leadingAnchor.constraint(equalTo: footer.leadingAnchor, constant: 40),
+            controls.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 22),
+            online.widthAnchor.constraint(equalToConstant: 150),
+            devices.widthAnchor.constraint(equalToConstant: 165),
+            formats.widthAnchor.constraint(equalToConstant: 145),
+            tools.widthAnchor.constraint(equalToConstant: 135),
+            online.heightAnchor.constraint(equalToConstant: 58),
+            devices.heightAnchor.constraint(equalTo: online.heightAnchor),
+            formats.heightAnchor.constraint(equalTo: online.heightAnchor),
+            tools.heightAnchor.constraint(equalTo: online.heightAnchor),
+            convertButton.centerXAnchor.constraint(equalTo: footer.centerXAnchor),
+            convertButton.topAnchor.constraint(equalTo: controls.bottomAnchor, constant: 43),
+            convertButton.widthAnchor.constraint(equalToConstant: 560),
+            convertButton.heightAnchor.constraint(equalToConstant: 72)
+        ])
+    }
 
-        convertButton.isEnabled = false
-        controls.addArrangedSubview(convertButton)
-        stack.addArrangedSubview(controls)
+    private func makeMenuButton(title: String, symbolName: String? = nil, options: [String]) -> ConverterControlButton {
+        let button = ConverterControlButton(title: title, symbolName: symbolName)
+        let menu = NSMenu()
+        for option in options {
+            let item = NSMenuItem(title: option, action: #selector(presetSelected(_:)), keyEquivalent: "")
+            item.target = self
+            item.representedObject = option
+            menu.addItem(item)
+        }
+        button.menu = menu
+        return button
     }
 
     @objc private func chooseFiles() {
@@ -79,8 +114,14 @@ final class ConverterViewController: NSViewController {
         }
     }
 
-    @objc private func presetChanged() {
+    @objc private func presetSelected(_ sender: NSMenuItem) {
+        guard let title = sender.representedObject as? String else { return }
+        selectedPreset = MediaPreset.initialCatalog.first(where: { $0.name == title })
         updateControls()
+    }
+
+    @objc private func convertRequested() {
+        // Conversion execution is deferred until the FFmpeg integration milestone.
     }
 
     private func addFiles(_ urls: [URL]) {
@@ -89,8 +130,6 @@ final class ConverterViewController: NSViewController {
     }
 
     private func updateControls() {
-        let count = queueStore.items.count
-        queueLabel.stringValue = count == 0 ? "No videos queued" : "\(count) video\(count == 1 ? "" : "s") queued"
-        convertButton.isEnabled = count > 0 && presetPicker.indexOfSelectedItem > 0
+        convertButton.isEnabled = !queueStore.items.isEmpty && selectedPreset != nil
     }
 }
