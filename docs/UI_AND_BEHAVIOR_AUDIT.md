@@ -43,6 +43,10 @@ MVC4 should retain the **picker-based simplicity**, not the old taxonomy. The pr
 - Adapt for modern macOS accessibility, dynamic text, keyboard navigation, VoiceOver, Retina density, and localization.
 - Do not preserve historic deployment targets, old updater behavior, iTunes delivery, legacy device names, or legacy media binaries.
 
+## Visual evidence
+
+Private visual references confirm the historical queued composition, central drag-and-drop field, lower destination control strip, nested popup menus, and disabled primary conversion state. The images are intentionally not included in this repository. See `VISUAL_REFERENCE_NOTES.md` for the recorded observations.
+
 ## Known evidence limits
 
-This audit is source- and resource-based. A runnable historical application has not been used as proof on a current macOS release. Before Phase 1 UI implementation, collect permitted visual references for empty, selected, converting, completed, cancelled, and failure states, then annotate the reconstructed UI against them.
+A runnable historical application has not been used as proof on a current macOS release. Before Phase 1 UI implementation, collect permitted visual references for converting, completed, cancelled, and failure states, then annotate the reconstructed UI against them.

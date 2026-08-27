@@ -11,13 +11,14 @@ Phase 0 — historical analysis, licensing/branding review, and implementation p
 - Working name: Miro Video Converter 4; branding remains under review.
 - Initial upstream audit completed at immutable revisions `6fae8ba` and `27efad9`; see `RESEARCH_FINDINGS.md` and `PROVENANCE_REGISTER.md`.
 - Source-based UI/behavior audit completed; see `UI_AND_BEHAVIOR_AUDIT.md`.
+- Private visual references for the queued/selection state were reviewed and recorded without publication; see `VISUAL_REFERENCE_NOTES.md`.
 - FFmpeg/ffprobe distribution options and the verification matrix are documented; no media build has been selected.
 
 ## Immediate priorities
 
 1. Complete the branding and file-level reuse review.
-2. Obtain permitted visual references for historical UI states.
-3. Obtain a qualified review of the project license and initial FFmpeg configuration posture.
+2. Obtain a qualified review of the project license and initial FFmpeg configuration posture.
+3. Obtain permitted visual references for historical converting, completed, cancelled, and failed states if available.
 4. Publish a reviewed Phase 1 implementation backlog.
 
 ## Important cautions
