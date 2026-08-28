@@ -144,7 +144,7 @@ final class ConverterViewController: NSViewController {
 
     private func updateControls() {
         let items = queueStore.items
-        queueHeightConstraint?.constant = items.isEmpty ? 0 : 122
+        queueHeightConstraint?.constant = items.isEmpty ? 0 : QueueStripView.preferredHeight(for: items.count)
         queueStrip.isHidden = items.isEmpty
         if !items.isEmpty {
             queueStrip.display(items: items)
