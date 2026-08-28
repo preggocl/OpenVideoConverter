@@ -14,11 +14,11 @@ Phase 1 foundation — original AppKit implementation, with Phase 0 branding and
 - FFmpeg/ffprobe distribution options and the verification matrix are documented; no media build has been selected.
 - A staged distribution policy distinguishes experimental GitHub artifacts from later signed/notarized stable releases.
 - Permission to use the historic Miro name was requested from PCF on 2026-08-27; no written authorization has been received.
-- Original AppKit foundation added with no FFmpeg integration. Its empty state follows the documented spatial composition, and selected files now appear in a compact queue strip that displays up to three individual rows with removal controls and indicates when additional items remain. Local Debug build and four automated tests pass on the current x86_64 development machine.
+- Original AppKit foundation added with no FFmpeg integration. Its empty state follows the documented spatial composition, and selected files appear in a complete, compact queue with a bounded vertical viewport; every row remains accessible by scrolling and can be removed. Local Debug build and four automated tests pass on the current x86_64 development machine.
 
 ## Immediate priorities
 
-1. Verify the compact multi-item queue treatment against permitted visual evidence.
+1. Verify the complete scrollable queue treatment against permitted visual evidence.
 2. Complete the branding and file-level reuse review.
 3. Obtain a qualified review of the project license and initial FFmpeg configuration posture.
 4. Obtain permitted visual references for historical converting, completed, cancelled, and failed states if available.

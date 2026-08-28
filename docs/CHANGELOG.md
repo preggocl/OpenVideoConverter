@@ -18,4 +18,4 @@ All notable project changes are documented here. The repository history remains 
 - Verified the foundation locally with three automated tests and a Debug app launch; no public binary has been released.
 - Reworked the empty conversion screen to use the documented restrained dark intake field and fixed output-control footer, with original controls and current-purpose menu labels.
 - Added a compact selected-file queue strip with duplicate suppression, an item count, and removal of the displayed item.
-- Extended the queue strip to display and remove up to three individual entries while preserving a compact summary of additional queued files.
+- Corrected the queue to retain every queued item in a bounded vertically scrollable list, matching the multi-item behavior of the MVC3 upstream interface.

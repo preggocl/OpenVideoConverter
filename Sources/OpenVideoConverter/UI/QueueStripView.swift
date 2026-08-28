@@ -4,7 +4,7 @@ final class QueueStripView: NSView {
     var onRemove: ((UUID) -> Void)?
 
     private let countLabel = NSTextField(labelWithString: "")
-    private let remainingLabel = NSTextField(labelWithString: "")
+    private let scrollView = NSScrollView()
     private let rows = NSStackView()
 
     override init(frame frameRect: NSRect) {
@@ -16,34 +16,37 @@ final class QueueStripView: NSView {
         countLabel.textColor = NSColor.white.withAlphaComponent(0.72)
         countLabel.translatesAutoresizingMaskIntoConstraints = false
 
-        remainingLabel.font = .systemFont(ofSize: 13, weight: .regular)
-        remainingLabel.textColor = NSColor.white.withAlphaComponent(0.52)
-        remainingLabel.alignment = .right
-        remainingLabel.translatesAutoresizingMaskIntoConstraints = false
-
         rows.orientation = .vertical
         rows.spacing = 0
         rows.translatesAutoresizingMaskIntoConstraints = false
 
+        scrollView.drawsBackground = false
+        scrollView.hasVerticalScroller = true
+        scrollView.autohidesScrollers = true
+        scrollView.borderType = .noBorder
+        scrollView.documentView = rows
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+
         addSubview(countLabel)
-        addSubview(remainingLabel)
-        addSubview(rows)
+        addSubview(scrollView)
         NSLayoutConstraint.activate([
             countLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32),
             countLabel.topAnchor.constraint(equalTo: topAnchor, constant: 12),
-            remainingLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -32),
-            remainingLabel.centerYAnchor.constraint(equalTo: countLabel.centerYAnchor),
-            rows.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25),
-            rows.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -25),
-            rows.topAnchor.constraint(equalTo: countLabel.bottomAnchor, constant: 8),
-            rows.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -8)
+            scrollView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25),
+            scrollView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -18),
+            scrollView.topAnchor.constraint(equalTo: countLabel.bottomAnchor, constant: 8),
+            scrollView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
+            rows.leadingAnchor.constraint(equalTo: scrollView.contentView.leadingAnchor),
+            rows.trailingAnchor.constraint(equalTo: scrollView.contentView.trailingAnchor),
+            rows.topAnchor.constraint(equalTo: scrollView.contentView.topAnchor),
+            rows.widthAnchor.constraint(equalTo: scrollView.contentView.widthAnchor)
         ])
     }
 
     required init?(coder: NSCoder) { nil }
 
     static func preferredHeight(for itemCount: Int) -> CGFloat {
-        42 + CGFloat(min(itemCount, 3)) * 58
+        42 + min(CGFloat(itemCount) * 58, 320)
     }
 
     func display(items: [QueueItem]) {
@@ -53,13 +56,16 @@ final class QueueStripView: NSView {
         }
 
         countLabel.stringValue = "\(items.count) video\(items.count == 1 ? "" : "s") queued"
-        remainingLabel.stringValue = items.count > 3 ? "Showing first 3" : ""
-        for item in items.prefix(3) {
+        for item in items {
             let row = QueueRowView(item: item)
             row.onRemove = { [weak self] id in self?.onRemove?(id) }
             rows.addArrangedSubview(row)
             row.heightAnchor.constraint(equalToConstant: 58).isActive = true
         }
+
+        rows.layoutSubtreeIfNeeded()
+        scrollView.contentView.scroll(to: .zero)
+        scrollView.reflectScrolledClipView(scrollView.contentView)
     }
 }
 

@@ -7,7 +7,7 @@ Private visual references of the historic Mac application were reviewed on 2026-
 ## Verified empty/queued composition
 
 - The window has a light native macOS title bar with the product title centered.
-- A queued item occupies a compact upper strip: thumbnail at left, filename and state beside it, and a circular remove control at right.
+- Each queued item occupies a compact row: thumbnail at left, filename and state beside it, and a circular remove control at right. The queue lists every item; once the visible list reaches its height limit, the remaining items are available by vertical scrolling.
 - The central field is a large dark drag-and-drop region with a quiet upload icon and an inline “Choose Files…” link.
 - The lower control strip is darker grey and starts with “Convert to”.
 - The historical control row uses compact, dark popup-style buttons: Apple, Android, Other, Format, and a settings button.
@@ -25,7 +25,7 @@ Private visual references of the historic Mac application were reviewed on 2026-
 2. Preserve native popup-menu interaction, but replace the device-era labels with current purpose-oriented menus.
 3. Keep the dark, restrained interface character without copying historic icons, artwork, text, or branded assets.
 4. Keep the primary flow legible before a preset is chosen; disabled/enabled states must remain accessible and clear.
-5. Add multi-item queue behavior and modern accessibility without turning the interface into a dashboard or editor.
+5. Preserve the complete multi-item queue with a bounded, vertically scrollable visible area; never replace unshown items with a summary-only count.
 
 ## Remaining reference needs
 
