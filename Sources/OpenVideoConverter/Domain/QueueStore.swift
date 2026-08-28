@@ -5,9 +5,12 @@ final class QueueStore {
     private(set) var items: [QueueItem] = []
 
     func append(urls: [URL]) {
-        let newItems = urls
-            .filter { url in !items.contains(where: { $0.url.standardizedFileURL == url.standardizedFileURL }) }
-            .map { QueueItem(url: $0) }
+        var knownURLs = Set(items.map { $0.url.standardizedFileURL })
+        let newItems = urls.compactMap { url -> QueueItem? in
+            let standardizedURL = url.standardizedFileURL
+            guard knownURLs.insert(standardizedURL).inserted else { return nil }
+            return QueueItem(url: url)
+        }
         items.append(contentsOf: newItems)
     }
 

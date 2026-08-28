@@ -4,8 +4,10 @@ import AppKit
 final class ConverterViewController: NSViewController {
     private let queueStore: QueueStore
     private let dropZone = DropZoneView()
+    private let queueStrip = QueueStripView()
     private let convertButton = ConverterControlButton(title: "Convert Now", style: .action)
     private var selectedPreset: MediaPreset?
+    private var queueHeightConstraint: NSLayoutConstraint?
 
     init(queueStore: QueueStore) {
         self.queueStore = queueStore
@@ -28,12 +30,19 @@ final class ConverterViewController: NSViewController {
         let footer = ConverterFooterView()
         footer.translatesAutoresizingMaskIntoConstraints = false
         dropZone.translatesAutoresizingMaskIntoConstraints = false
+        queueStrip.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(dropZone)
+        view.addSubview(queueStrip)
         view.addSubview(footer)
+        queueHeightConstraint = queueStrip.heightAnchor.constraint(equalToConstant: 0)
+        queueHeightConstraint?.isActive = true
         NSLayoutConstraint.activate([
+            queueStrip.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            queueStrip.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            queueStrip.topAnchor.constraint(equalTo: view.topAnchor),
             dropZone.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             dropZone.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            dropZone.topAnchor.constraint(equalTo: view.topAnchor),
+            dropZone.topAnchor.constraint(equalTo: queueStrip.bottomAnchor),
             dropZone.bottomAnchor.constraint(equalTo: footer.topAnchor),
             footer.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             footer.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -43,6 +52,10 @@ final class ConverterViewController: NSViewController {
 
         dropZone.onFileURLsDropped = { [weak self] urls in self?.addFiles(urls) }
         dropZone.onChooseFiles = { [weak self] in self?.chooseFiles() }
+        queueStrip.onRemove = { [weak self] id in
+            self?.queueStore.remove(id: id)
+            self?.updateControls()
+        }
         configureFooter(in: footer)
         updateControls()
     }
@@ -130,6 +143,12 @@ final class ConverterViewController: NSViewController {
     }
 
     private func updateControls() {
+        let items = queueStore.items
+        queueHeightConstraint?.constant = items.isEmpty ? 0 : 122
+        queueStrip.isHidden = items.isEmpty
+        if !items.isEmpty {
+            queueStrip.display(items: items)
+        }
         convertButton.isEnabled = !queueStore.items.isEmpty && selectedPreset != nil
     }
 }

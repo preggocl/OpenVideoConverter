@@ -22,3 +22,16 @@ import Testing
     #expect(startedConversion)
     #expect(completed)
 }
+
+@Test @MainActor func queueStoreDeduplicatesAndRemovesFiles() {
+    let store = QueueStore()
+    let firstURL = URL(fileURLWithPath: "/tmp/first.mov")
+    let secondURL = URL(fileURLWithPath: "/tmp/second.mov")
+
+    store.append(urls: [firstURL, firstURL, secondURL])
+    #expect(store.items.count == 2)
+
+    store.remove(id: store.items[0].id)
+    #expect(store.items.count == 1)
+    #expect(store.items[0].url == secondURL)
+}
